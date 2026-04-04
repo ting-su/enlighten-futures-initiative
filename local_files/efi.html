@@ -5,49 +5,55 @@
   <title>EFI | Cultivating Human Wisdom in the Age of AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 字体：Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #F7F3EC;          /* 比纯米白稍微深一点，更像纸 */
-      --bg-alt: #F1ECE4;
-      --text-main: #333333;   /* 正文：柔和深灰 */
-      --text-sub: #666666;    /* 副文：更浅一点的灰 */
-      --text-strong: #262626; /* 重要文字：偏灰的“墨黑”，不是纯黑 */
-      --accent: #BAA27A;      /* 香槟金，低调一点的金色 */
-      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --parchment:      #F5EEE3;
+      --parchment-deep: #EDE4D3;
+      --parchment-warm: #E8DECB;
+      --cream:          #FAF6EE;
+      --moss:           #687C5C;
+      --moss-light:     #96AA86;
+      --moss-pale:      #C8D4BC;
+      --amber:          #B8895A;
+      --amber-light:    #CCAA78;
+      --ink:            #2B2620;
+      --ink-mid:        #564E46;
+      --ink-soft:       #8C8278;
+      --ff-display:     'Cormorant Garamond', Georgia, serif;
+      --ff-body:        'Inter', system-ui, sans-serif;
+      --ease:           cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: var(--font);
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
+      font-family: var(--ff-body);
+      background: var(--parchment);
+      color: var(--ink-mid);
+      line-height: 1.75;
     }
 
     .container {
       width: 90%;
-      max-width: 1000px;
+      max-width: 1060px;
       margin: 0 auto;
     }
 
-    /* 顶部导航 */
+    /* ─── NAV ─── */
     nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(247, 243, 236, 0.96);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 1rem 0;
-      backdrop-filter: blur(8px);
+      z-index: 100;
+      padding: 1.3rem 0;
+      background: rgba(245, 238, 227, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(104, 124, 92, 0.10);
     }
 
     .nav-inner {
@@ -57,301 +63,489 @@
     }
 
     .logo {
-      font-weight: 600;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
+      font-family: var(--ff-display);
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-decoration: none;
-      color: var(--text-strong); /* 墨灰 */
+      color: var(--ink);
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #777;
-      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-left: 1.8rem;
+      letter-spacing: 0.2em;
+      margin-left: 2rem;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--text-strong);
-    }
+    .nav-links a:hover { color: var(--moss); }
 
-    /* Hero 区 */
+    /* ─── HERO ─── */
     .hero {
-      padding: 5rem 0 4rem;
+      min-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      background-color: var(--bg);
+      padding: 7rem 0 6rem;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% 38%, #EDE4CF 0%, transparent 65%),
+        var(--parchment);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Organic rings — CSS only */
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-ring-1 {
+      width: 580px; height: 580px;
+      border: 1px solid rgba(104, 124, 92, 0.07);
+      top: -8%; left: -12%;
+    }
+
+    .hero-ring-2 {
+      width: 400px; height: 400px;
+      border: 1px solid rgba(184, 137, 90, 0.07);
+      bottom: 4%; right: -7%;
+    }
+
+    .hero-ring-3 {
+      width: 220px; height: 220px;
+      border: 1px solid rgba(104, 124, 92, 0.06);
+      bottom: 18%; left: 6%;
     }
 
     .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      border: 1px solid rgba(186,162,122,0.4);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 1.5rem;
+      letter-spacing: 0.28em;
+      color: var(--moss);
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--moss-light);
     }
 
     .hero-title {
-      font-size: 2.6rem;
-      font-weight: 500;        /* 稍微轻一点，不那么硬 */
-      letter-spacing: 0.03em;  /* 稍微拉开一点，像海报标题 */
-      line-height: 1.25;
-      margin: 0 0 1.2rem;
-      color: var(--text-strong);
+      font-family: var(--ff-display);
+      font-size: clamp(3.2rem, 7vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-bottom: 2rem;
     }
 
-    .hero-title span {
-      color: var(--accent);
+    .hero-title em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .hero-rule {
+      width: 52px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--amber-light), transparent);
+      margin: 0 auto 2rem;
     }
 
     .hero-text {
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
-      font-size: 1rem;
-      color: var(--text-sub);
+      max-width: 520px;
+      font-size: 0.97rem;
+      line-height: 2;
+      color: var(--ink-soft);
+      margin-bottom: 3.2rem;
+      font-weight: 300;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 30px;
-      border: 1px solid #111;          /* 按钮边框保持深色，方便点击识别 */
-      font-size: 0.8rem;
+      padding: 13px 38px;
+      border: 1px solid var(--moss);
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.22em;
       text-decoration: none;
-      color: var(--text-strong);       /* 用墨灰而不是纯黑 */
+      color: var(--moss);
       background: transparent;
+      transition: background 0.25s var(--ease), color 0.25s var(--ease);
     }
 
     .btn:hover {
-      background: #111;  /* hover 背景可以是纯黑 */
-      color: #fff;
+      background: var(--moss);
+      color: var(--cream);
     }
 
-    section {
-      padding: 4.5rem 0;
-    }
+    /* ─── SECTION SHARED ─── */
+    section { padding: 6.5rem 0; }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.75rem;
-      font-weight: 500;
+    .label {
+      font-size: 0.67rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
+      letter-spacing: 0.26em;
+      color: var(--moss);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .label::after {
+      content: '';
+      flex-shrink: 0;
+      width: 22px;
+      height: 1px;
+      background: var(--moss-light);
+    }
+
+    .centered .label {
+      justify-content: center;
+    }
+
+    .centered .label::before {
+      content: '';
+      flex-shrink: 0;
+      width: 22px;
+      height: 1px;
+      background: var(--moss-light);
     }
 
     .section-title {
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.3;
-      margin: 0;
-      color: var(--text-strong);
+      font-family: var(--ff-display);
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--ink);
     }
 
     .section-body {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 0.98rem;
-      color: var(--text-sub);
-      text-align: center;
+      max-width: 640px;
+      margin: 1.2rem auto 0;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.88;
+      font-weight: 300;
     }
 
-    .grid-3 {
+    /* ─── MISSION ─── */
+    #mission { background: var(--cream); }
+
+    .mission-inner {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .mission-left .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+    }
+
+    .mission-right p {
+      font-size: 1.03rem;
+      line-height: 1.95;
+      color: var(--ink-mid);
+      font-weight: 300;
+    }
+
+    /* ─── PILLARS ─── */
+    #focus { background: var(--parchment-deep); }
+
+    .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
+      margin-top: 3.5rem;
+      border: 1px solid rgba(104, 124, 92, 0.13);
+    }
+
+    .pillar-item {
+      padding: 2.8rem 2.2rem;
+      border-right: 1px solid rgba(104, 124, 92, 0.13);
+    }
+
+    .pillar-item:last-child { border-right: none; }
+
+    .pillar-num {
+      font-family: var(--ff-display);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--moss-pale);
+      line-height: 1;
+      margin-bottom: 1.3rem;
     }
 
     .pillar-item h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.7rem;
-      color: var(--text-strong);
+      font-family: var(--ff-display);
+      font-size: 1.28rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
     }
 
     .pillar-item p {
-      font-size: 0.95rem;
-      color: var(--text-sub);
-      margin: 0;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.82;
+      font-weight: 300;
     }
 
-    .science-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      max-width: 850px;
-    }
+    /* ─── RESEARCH ─── */
+    #science { background: var(--parchment); }
 
-    .science-list li {
+    .research-cols {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 1.8rem;
-      padding: 1.6rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.07);
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      margin-top: 4rem;
     }
 
-    .science-list strong {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-strong);
+    .research-group h4 {
+      font-family: var(--ff-display);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--moss-pale);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.6rem;
     }
 
-    .science-list span {
-      font-size: 0.95rem;
-      color: var(--text-sub);
+    .research-list { list-style: none; }
+
+    .research-list li {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(43, 38, 32, 0.055);
     }
 
-    .founders-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
+    .research-list li:last-child { border-bottom: none; }
+
+    .research-list strong {
+      display: block;
+      font-family: var(--ff-display);
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
     }
 
-    .founder-block {
-      width: 100%;
+    .research-list span {
+      font-size: 0.87rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ─── FOUNDERS ─── */
+    #founder {
+      background: var(--parchment-warm);
+      padding: 8rem 0;
+    }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 5rem;
+      align-items: start;
+      margin-top: 5rem;
+    }
+
+    .founders-vline {
+      background: linear-gradient(to bottom, transparent 5%, var(--amber-light) 40%, var(--amber-light) 60%, transparent 95%);
+      align-self: stretch;
+      opacity: 0.45;
+    }
+
+    .founder-card {
       text-align: center;
-      padding: 3rem 2rem;
-      position: relative;
+      padding: 0.5rem 1rem;
     }
 
-    .founder-block + .founder-block::before {
-      content: '';
+    .founder-avatar {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 1px solid rgba(184, 137, 90, 0.35);
+      background: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2.2rem;
+      font-family: var(--ff-display);
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+    }
+
+    .founder-openquote {
       display: block;
-      width: 60px;
-      height: 1px;
-      background: var(--accent);
-      margin: 0 auto 3rem;
+      font-family: var(--ff-display);
+      font-size: 5.5rem;
+      line-height: 0.55;
+      color: var(--amber-light);
       opacity: 0.6;
-    }
-
-    .founder-mark {
-      font-size: 4rem;
-      line-height: 1;
-      color: var(--accent);
-      opacity: 0.35;
-      font-family: Georgia, serif;
-      margin-bottom: 0.5rem;
-      display: block;
+      margin-bottom: 1.6rem;
     }
 
     .founder-quote {
-      font-size: 1.15rem;
+      font-family: var(--ff-display);
+      font-size: 1.22rem;
       font-style: italic;
-      line-height: 1.85;
-      color: var(--text-strong);
-      max-width: 680px;
-      margin: 0 auto 2rem;
       font-weight: 300;
-      letter-spacing: 0.01em;
-    }
-
-    .founder-caption {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--accent);
-      display: inline-block;
+      line-height: 1.92;
+      color: var(--ink);
+      margin-bottom: 2.6rem;
     }
 
     .founder-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--text-strong);
-      text-transform: uppercase;
       display: block;
-      margin-bottom: 0.3rem;
+      font-family: var(--ff-display);
+      font-size: 1.12rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
     }
 
-    .founder-title {
-      font-size: 0.72rem;
+    .founder-role {
+      font-size: 0.66rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent);
+      letter-spacing: 0.24em;
+      color: var(--moss);
     }
 
-    @media (max-width: 768px) {
-      .founder-block {
-        padding: 2rem 0.5rem;
-      }
-    }
-
+    /* ─── FOOTER ─── */
     footer {
-      background: #111;   /* footer 深色，稳重 */
-      color: #f5f5f5;
-      padding: 3.5rem 0 2.5rem;
+      background: var(--ink);
+      color: rgba(245, 238, 227, 0.6);
+      padding: 4.5rem 0 2.5rem;
       text-align: center;
-      margin-top: 2rem;
     }
 
     .footer-logo {
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-family: var(--ff-display);
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--parchment);
       margin-bottom: 0.5rem;
     }
 
     .footer-location {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      font-size: 0.67rem;
       text-transform: uppercase;
-      color: #b0b0b0;
-      margin-bottom: 2rem;
+      letter-spacing: 0.26em;
+      color: var(--moss-light);
+      margin-bottom: 0;
     }
+
+    .footer-rule {
+      width: 38px;
+      height: 1px;
+      background: rgba(245, 238, 227, 0.12);
+      margin: 2.2rem auto;
+    }
+
+    .footer-links { margin-bottom: 2.5rem; }
 
     .footer-links a {
-      color: #bdbdbd;
+      color: rgba(245, 238, 227, 0.4);
       text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin: 0 1rem;
+      margin: 0 1.3rem;
+      transition: color 0.2s;
     }
 
-    .footer-links a:hover {
-      color: #ffffff;
-    }
+    .footer-links a:hover { color: var(--amber-light); }
 
     .copyright {
-      margin-top: 3rem;
-      font-size: 0.7rem;
-      color: #8a8a8a;
-      letter-spacing: 0.05em;
+      font-size: 0.66rem;
+      color: rgba(245, 238, 227, 0.2);
+      letter-spacing: 0.06em;
     }
 
-    @media (max-width: 768px) {
-      .grid-3 {
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .mission-inner {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
       }
-      .hero-title {
-        font-size: 2.1rem;
-      }
-      .science-list li {
+
+      .pillars-grid {
         grid-template-columns: 1fr;
-        gap: 0.6rem;
       }
-      .nav-links {
-        display: none;
+
+      .pillar-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(104, 124, 92, 0.13);
       }
+
+      .pillar-item:last-child { border-bottom: none; }
+
+      .research-cols {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .founders-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .founders-vline { display: none; }
+
+      .founder-card + .founder-card {
+        padding-top: 3.5rem;
+        border-top: 1px solid rgba(184, 137, 90, 0.2);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 4.5rem 0; }
+      #founder { padding: 5rem 0; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="container nav-inner">
       <a href="#" class="logo">EFI</a>
@@ -359,18 +553,24 @@
         <a href="#mission">Mission</a>
         <a href="#focus">Pillars</a>
         <a href="#science">Research</a>
+        <a href="#founder">Founders</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
     <div class="container">
-      <span class="hero-eyebrow">Enlighten Futures Initiative</span>
+      <div class="hero-eyebrow">Enlighten Futures Initiative</div>
       <h1 class="hero-title">
-        Cultivating <span>Human Wisdom</span><br>
+        Cultivating <em>Human Wisdom</em><br>
         in the Age of AI
       </h1>
+      <div class="hero-rule"></div>
       <p class="hero-text">
         In an age of increasingly intelligent machines,<br>
         we are committed to nurturing increasingly wise humans.<br><br>
@@ -380,172 +580,179 @@
     </div>
   </header>
 
+  <!-- MISSION -->
   <section id="mission">
     <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">Our Mission</div>
-        <h2 class="section-title">
-          Building Inner Capacity for the AI Era
-        </h2>
-      </div>
-      <div class="section-body">
-        We are entering an era of unprecedented technological power. EFI focuses on human flourishing.
-        We champion and support educational initiatives that cultivate attention, emotional resilience,
-        and ethical judgment—equipping the next generation with the inner capacity to thrive alongside AI.
+      <div class="mission-inner">
+        <div class="mission-left reveal">
+          <div class="label">Our Mission</div>
+          <h2 class="section-title">Building Inner<br>Capacity for<br>the AI Era</h2>
+        </div>
+        <div class="mission-right reveal reveal-delay-1">
+          <p>
+            We are entering an era of unprecedented technological power. EFI focuses on human flourishing.
+            We champion and support educational initiatives that cultivate attention, emotional resilience,
+            and ethical judgment — equipping the next generation with the inner capacity to thrive alongside AI.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="focus" style="background: var(--bg-alt);">
+  <!-- PILLARS -->
+  <section id="focus">
     <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">Core Pillars</div>
+      <div class="centered reveal">
+        <div class="label">Core Pillars</div>
         <h2 class="section-title">A Holistic Approach</h2>
       </div>
-
-      <div class="grid-3">
-        <div class="pillar-item">
-          <h3>01. Cognitive Resilience</h3>
+      <div class="pillars-grid">
+        <div class="pillar-item reveal reveal-delay-1">
+          <div class="pillar-num">01</div>
+          <h3>Cognitive Resilience</h3>
           <p>
             In an era of infinite information, attention is our scarcest resource.
             We support work on metacognition and attention skills that helps people stay clear,
             grounded, and able to choose what truly matters amid constant digital noise.
           </p>
         </div>
-        <div class="pillar-item">
-          <h3>02. Ethical Agency</h3>
+        <div class="pillar-item reveal reveal-delay-2">
+          <div class="pillar-num">02</div>
+          <h3>Ethical Agency</h3>
           <p>
             Technology does not choose; people do. We support approaches that weave empathy, ethics,
             and long-term responsibility into how children and adults learn, lead, and make decisions with AI.
           </p>
         </div>
-        <div class="pillar-item">
-          <h3>03. Future Ecosystems</h3>
+        <div class="pillar-item reveal reveal-delay-3">
+          <div class="pillar-num">03</div>
+          <h3>Future Ecosystems</h3>
           <p>
-            Building living bridges between research labs and learning communities—connecting scientific insight
-            with real-world educational settings and the people who shape them.
+            Building living bridges between research labs and learning communities — connecting scientific
+            insight with real-world educational settings and the people who shape them.
           </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- RESEARCH -->
   <section id="science">
     <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">Research Focus</div>
-        <h2 class="section-title">Science & Inquiry We Support</h2>
+      <div class="centered reveal">
+        <div class="label">Research Focus</div>
+        <h2 class="section-title">Science &amp; Inquiry We Support</h2>
+        <p class="section-body">
+          EFI serves as a convening and support platform for research. We collaborate with and support
+          researchers, educators, and institutions whose work explores questions such as:
+        </p>
       </div>
-
-      <div class="section-body" style="margin-bottom:2.5rem;">
-        EFI serves as a convening and support platform for research. We collaborate with and support
-        researchers, educators, and institutions whose work explores questions such as:
+      <div class="research-cols">
+        <div class="research-group reveal reveal-delay-1">
+          <h4>Research Areas</h4>
+          <ul class="research-list">
+            <li>
+              <strong>Neuroplasticity</strong>
+              <span>How contemplative, reflective, and relational practices shape developing brains, resilience, and long-term well-being.</span>
+            </li>
+            <li>
+              <strong>Digital Wellbeing</strong>
+              <span>Empirical models of attention, habit formation, and recovery in environments saturated with algorithmic feeds and screen-driven demands.</span>
+            </li>
+            <li>
+              <strong>AI &amp; Human Values</strong>
+              <span>Human-centered, value-aligned ways of bringing AI into learning, professional judgment, and collective decision-making.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="research-group reveal reveal-delay-2">
+          <h4>Frontier Themes</h4>
+          <ul class="research-list">
+            <li>
+              <strong>Directed Neuroplasticity</strong>
+              <span>Countering the passive wiring of algorithms with self-directed structural changes in the brain that support deep focus and agency.</span>
+            </li>
+            <li>
+              <strong>Cognitive Immunology</strong>
+              <span>Building the "mental immune system" — cultivating resistance to algorithmic addiction, information overload, and manipulation.</span>
+            </li>
+            <li>
+              <strong>AI Alignment &amp; Ethics</strong>
+              <span>Preparing the human-in-the-loop to address alignment challenges and to keep powerful AI systems anchored in human judgment and wisdom.</span>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <ul class="science-list">
-        <li>
-          <strong>Neuroplasticity</strong>
-          <span>
-            How contemplative, reflective, and relational practices shape developing brains, resilience,
-            and long-term well-being.
-          </span>
-        </li>
-        <li>
-          <strong>Digital Wellbeing</strong>
-          <span>
-            Empirical models of attention, habit formation, and recovery in environments saturated with
-            algorithmic feeds and screen-driven demands.
-          </span>
-        </li>
-        <li>
-          <strong>AI & Human Values</strong>
-          <span>
-            Human-centered, value-aligned ways of bringing AI into learning, professional judgment,
-            and collective decision-making.
-          </span>
-        </li>
-      </ul>
-
-      <div class="section-header" style="margin-top:3.5rem; margin-bottom:2rem;">
-        <div class="section-subtitle">Frontier Themes We Track</div>
-      </div>
-
-      <ul class="science-list">
-        <li>
-          <strong>Directed Neuroplasticity</strong>
-          <span>
-            Countering the passive wiring of algorithms with self-directed structural changes in the brain
-            that support deep focus and agency.
-          </span>
-        </li>
-        <li>
-          <strong>Cognitive Immunology</strong>
-          <span>
-            Building the “mental immune system” — cultivating resistance to algorithmic addiction,
-            information overload, and manipulation.
-          </span>
-        </li>
-        <li>
-          <strong>AI Alignment & Ethics</strong>
-          <span>
-            Preparing the human-in-the-loop to address alignment challenges and to keep powerful AI systems
-            anchored in human judgment and wisdom.
-          </span>
-        </li>
-      </ul>
     </div>
   </section>
 
-  <section id=”founder” style=”background: var(--bg-alt);”>
-    <div class=”container”>
-      <div class=”section-header”>
-        <div class=”section-subtitle”>From the Co-Founders</div>
+  <!-- FOUNDERS -->
+  <section id="founder">
+    <div class="container">
+      <div class="centered reveal">
+        <div class="label">From the Co-Founders</div>
+        <h2 class="section-title">The Convictions Behind EFI</h2>
       </div>
-      <div class=”founders-wrap”>
+      <div class="founders-grid">
 
-        <div class=”founder-block”>
-          <span class=”founder-mark”>&ldquo;</span>
-          <p class=”founder-quote”>
+        <div class="founder-card reveal reveal-delay-1">
+          <div class="founder-avatar">A</div>
+          <span class="founder-openquote">&ldquo;</span>
+          <p class="founder-quote">
             I founded EFI with a simple conviction: the future of AI will be shaped by the quality of our
             attention, courage, and care. When we invest in inner strength and shared wisdom, powerful tools
             can help us build societies that are more humane, more just, and more awake.
           </p>
-          <span class=”founder-name”>Alice Yihan Wang</span>
-          <span class=”founder-title”>Co-Founder, EFI</span>
+          <span class="founder-name">Alice Yihan Wang</span>
+          <span class="founder-role">Co-Founder, EFI</span>
         </div>
 
-        <div class=”founder-block”>
-          <span class=”founder-mark”>&ldquo;</span>
-          <p class=”founder-quote”>
+        <div class="founders-vline reveal"></div>
+
+        <div class="founder-card reveal reveal-delay-2">
+          <div class="founder-avatar">A</div>
+          <span class="founder-openquote">&ldquo;</span>
+          <p class="founder-quote">
             The questions of deepest consequence resist algorithmic resolution. How we form the moral
             imagination of the next generation, how we inhabit uncertainty with integrity, how we sustain
             our humanity against the gravity of unprecedented power — these are not challenges of
             engineering, but of civilization. EFI exists to tend that threshold: where the cultivation
             of character becomes the precondition for a future worth inhabiting.
           </p>
-          <span class=”founder-name”>Amber Su</span>
-          <span class=”founder-title”>Co-Founder, EFI</span>
+          <span class="founder-name">Amber Su</span>
+          <span class="founder-role">Co-Founder, EFI</span>
         </div>
 
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="container">
       <div class="footer-logo">Enlighten Futures Initiative</div>
-      <div class="footer-location">ATHERTON, CALIFORNIA</div>
+      <div class="footer-location">Atherton, California</div>
+      <div class="footer-rule"></div>
       <div class="footer-links">
         <a href="#">Contact</a>
         <a href="#">LinkedIn</a>
         <a href="#">Partners</a>
       </div>
-      <div class="copyright">
-        © 2024 Enlighten Futures Initiative. All rights reserved.
-      </div>
+      <div class="copyright">© 2025 Enlighten Futures Initiative. All rights reserved.</div>
     </div>
   </footer>
 
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
-
