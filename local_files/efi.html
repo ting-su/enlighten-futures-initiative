@@ -32,13 +32,13 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 17px; }
 
     body {
       font-family: var(--ff-body);
       background: var(--beige);
       color: var(--brown-mid);
-      line-height: 1.7;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -67,7 +67,7 @@
 
     .logo {
       font-family: var(--ff-display);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-decoration: none;
@@ -79,7 +79,7 @@
     .nav-links a {
       text-decoration: none;
       color: var(--brown-sub);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: color 0.2s;
@@ -157,12 +157,12 @@
 
     .hero-title {
       font-family: var(--ff-display);
-      font-size: clamp(3.4rem, 5.5vw, 5.4rem);
+      font-size: clamp(4.2rem, 7.5vw, 7.8rem);
       font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: 0.01em;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
       color: var(--white);
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .hero-title em {
@@ -171,12 +171,12 @@
     }
 
     .hero-sub {
-      font-size: 1.08rem;
-      line-height: 1.9;
+      font-size: 1.12rem;
+      line-height: 1.85;
       color: rgba(255,255,255,0.55);
       font-weight: 300;
-      margin-bottom: 3rem;
-      max-width: 440px;
+      margin-bottom: 3.2rem;
+      max-width: 460px;
     }
 
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
@@ -244,32 +244,32 @@
 
     .stat-num {
       font-family: var(--ff-display);
-      font-size: 3.4rem;
+      font-size: 4rem;
       font-weight: 300;
       color: var(--white);
       line-height: 1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
     }
 
-    .stat-card.accent .stat-num { font-size: 2.6rem; margin: 0; }
+    .stat-card.accent .stat-num { font-size: 2.8rem; margin: 0; }
 
     .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
       font-weight: 300;
     }
 
     .stat-card.accent .stat-label {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
       font-style: italic;
       font-family: var(--ff-display);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     /* ─── SECTION SHARED ─── */
-    section { padding: 6rem 0; }
+    section { padding: 7rem 0; }
 
     .label {
       display: inline-flex;
@@ -291,14 +291,14 @@
 
     .section-title {
       font-family: var(--ff-display);
-      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
       font-weight: 400;
-      line-height: 1.15;
+      line-height: 1.12;
       color: var(--brown-text);
     }
 
     .section-body {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--brown-sub);
       line-height: 1.9;
       font-weight: 300;
@@ -316,12 +316,13 @@
     }
 
     .mission-left .section-title {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
       margin-top: 0.8rem;
+      line-height: 1.08;
     }
 
     .mission-right p {
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       line-height: 2;
       color: var(--brown-mid);
       font-weight: 300;
@@ -369,14 +370,14 @@
 
     .pillar-card h3 {
       font-family: var(--ff-display);
-      font-size: 1.5rem;
+      font-size: 1.65rem;
       font-weight: 500;
       color: var(--brown-text);
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .pillar-card p {
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: var(--brown-sub);
       line-height: 1.85;
       font-weight: 300;
@@ -422,16 +423,16 @@
     .research-list strong {
       display: block;
       font-family: var(--ff-display);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 500;
       color: var(--brown-text);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
     }
 
     .research-list span {
-      font-size: 0.93rem;
+      font-size: 0.97rem;
       color: var(--brown-sub);
-      line-height: 1.78;
+      line-height: 1.8;
       font-weight: 300;
     }
 
@@ -439,7 +440,7 @@
     #founder {
       background: var(--brown-deep);
       color: var(--white);
-      padding: 7rem 0;
+      padding: 8rem 0;
     }
 
     .founders-header {
@@ -494,10 +495,10 @@
 
     .founder-quote {
       font-family: var(--ff-display);
-      font-size: 1.32rem;
+      font-size: 1.45rem;
       font-style: italic;
       font-weight: 300;
-      line-height: 1.92;
+      line-height: 1.95;
       color: rgba(255,255,255,0.85);
       margin-bottom: 2.5rem;
     }
